@@ -3,10 +3,10 @@ from datetime import datetime, timedelta, date
 
 def get_birthdays_per_week(users):
     if not users:  # в разі якщо список користувачів порожній....
-        return {} # повертає порожній словник
-    now = date.today() # поточна дата береться з системного часу компьютора
-    today = date.today()
-    current_day = today.weekday()
+        return {}  # повертає порожній словник
+    now = date.today()  # поточна дата береться з системного часу компьютора
+#    today = date.today()
+#    current_day = today.weekday()
     days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     # Оновлений словник для зберігання днів народження
     birthdays_per_week = {day: [] for day in days_of_week}
@@ -21,16 +21,16 @@ def get_birthdays_per_week(users):
         if now <= new_birthday <= now + timedelta(
                 days=7):  # якщо оновлений показник дня народження знаходиться в інтервалі часу між поточною датою і датою + 7 днів то...
             day_week = new_birthday.weekday()  # визначаємо на який день тижня припадає день народження
-            day_name = days_of_week[day_week] if day_week not in (5, 6) else 'Monday'# Отримуємо назву дня тижня
+            day_name = days_of_week[day_week] if day_week not in (5, 6) else 'Monday'
             # Перевірка, чи день народження потрапляє на вихідний
             if day_name in ['Saturday', 'Sunday']:  # в разі коли день тижня припадає на суботу чи неділю то...
                 day_name = 'Monday'  # Переносимо відображення циєї дати на понеділок
             birthdays_per_week[day_name].append(
                 name)  # в разі якщо відповідає попередній умові, добавляємо значення в словник...
 
-
     print(birthdays_per_week)  # друкуємо словник днів тижня з наявними/відсутніми днями народження...
     return {key: value for key, value in birthdays_per_week.items() if value}  # повертаємо словник, видаляємо пусті списки
+
 
 if __name__ == "__main__":
     users = [

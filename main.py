@@ -24,7 +24,7 @@ def get_birthdays_per_week(users):
             if day_week not in (5, 6):
                 day_name = days_of_week[day_week]
             else:
-                'Monday'
+                day_name = 'Monday'
             # Перевірка, чи день народження потрапляє на вихідний
             if day_name in ['Saturday', 'Sunday']:
                 day_name = 'Monday'
